@@ -1,0 +1,118 @@
+<html>
+<head>
+  <meta <charset="utf-8">
+  <title>Resp Web - Column Drop</title>
+  <style>
+    .container{
+      margin:5px;
+      padding:5px;
+      box-sizing: border-box;
+      display:grid;
+    }
+    #t1{
+      border: 1px solid black;
+      margin:5px;
+      padding:5px;
+      box-sizing: border-box;
+      color:red;
+      text-align:center;
+      }
+      #t2{
+        border: 1px solid black;
+        margin:5px;
+        padding:5px;
+        box-sizing: border-box;
+        color:orange;
+        text-align: center;
+      }
+      #t3{
+        border: 1px solid black;
+        margin:5px;
+        padding:5px;
+        box-sizing: border-box;
+        color: gold;
+        text-align: justify;
+      }
+      #t4{
+        border: 1px solid black;
+        margin:5px;
+        padding:5px;
+        box-sizing: border-box;
+        color: green;
+        text-align: justify;
+      }
+      #t5{
+        border: 1px solid black;
+        margin:5px;
+        padding:5px;
+        box-sizing: border-box;
+        color: blue;
+        text-align: justify;
+      }
+
+      #t1,#t2,#t3,#t4,#t5{
+        width: 100%;
+      }
+      @media (min-width: 700px) {
+        .below{
+          display:grid;
+          grid-template-columns: 50% 50%;
+          }
+        .text{
+          display:grid;
+          grid-template-rows: 33% 34% 33%;
+        }
+      }
+      @media (min-width: 900px) {
+        .text{
+          grid-template-columns: 50% 50%;
+          height: 150%;
+        }
+      }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+    <div id="t1">
+      <h1>Responsive Web</h1>
+    </div>
+
+  <div class="below">
+      <div id="t2">
+        <h2>Column Drop</h2>
+      </div>
+
+    <div class="text">
+          <div id="t3">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Dolor magnam facilis vitae ullam laborum rerum quasi repellendus
+              quas quidem? Est doloribus rem consequuntur architecto corrupti totam,
+              necessitatibus rerum illo quod veritatis nulla. Iure sint numquam
+              saepe, vel! Tempore quo iconsequuntur! Voluptas nostrum in similique
+              sit maiores.
+          </div>
+          <div id="t4">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Dolor magnam facilis vitae ullam laborum rerum quasi repellendus
+              quas quidem? Est doloribus rem consequuntur architecto corrupti totam,
+              necessitatibus rerum illo quod veritatis nulla. Iure sint numquam
+              saepe, vel! Tempore quo iconsequuntur! Voluptas nostrum in similique
+              sit maiores.
+          </div>
+          <div id="t5">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Dolor magnam facilis vitae ullam laborum rerum quasi repellendus
+              quas quidem? Est doloribus rem consequuntur architecto corrupti totam,
+              necessitatibus rerum illo quod veritatis nulla. Iure sint numquam
+              saepe, vel! Tempore quo iconsequuntur! Voluptas nostrum in similique
+              sit maiores.
+          </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
