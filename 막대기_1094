@@ -1,0 +1,30 @@
+//BaekJoon_막대기_1094
+#include <stdio.h>
+
+int main(void){
+
+	int n[7];
+	int sum=0;
+	int x;
+	int i=0;
+	int j=0;
+
+	scanf("%d", &x);
+
+	n[0]=64;
+	while(sum<x){
+		if(sum+n[i]<=x){
+			sum=sum+n[i];
+			i++;
+			n[i]=n[i-1]/2;
+			j++;
+		}
+		else {
+			i++;
+			n[i]=n[i-1]/2;
+		}
+	}
+	printf("%d", j);
+
+	return 0;
+}
