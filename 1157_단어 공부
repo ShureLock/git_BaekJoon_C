@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int main(void){
+	
+	int i,j;
+	int length;
+	char word[1000001];
+	char alp1[27]={0};
+	int alp2[26]={0,};
+	int alp2_len;
+	int max=0;
+	int a;
+	int index;
+
+	//단어의 길이
+	scanf("%s", word);
+	for(i=0; i<sizeof(word); i++){
+		if(word[i]==0){
+			length=i;
+			break;
+		}
+	}
+
+	//대문자를 소문자로
+	for(i=0; i<sizeof(word); i++){
+		if(word[i]>='A' && word[i]<='Z')
+			word[i]=word[i]+32;
+	}
+	
+	//알파벳 선별 및 갯수 카운팅
+	for(i=0; i<length; i++){ 
+		for(j=0; j<26; j++) {
+			if(alp1[j]==NULL){
+				alp1[j]=word[i];
+				alp2[j]=1;
+				break;
+			}
+			else if(alp1[j]!=word[i])
+				continue;
+			else{
+				alp2[j] += 1;
+				break;
+			}
+		}
+	}
+
+	//선별된 수,알파벳 길이
+	for(i=0; i<26; i++){
+		if(alp2[i]==0){
+			alp2_len=i;
+			break;
+		}
+	}
+
+	//가장 많은 수의 알파벳 선별
+	for(i=0; i<alp2_len; i++){
+		if(alp2[i]==max)
+			a=1;
+		else if(alp2[i] > max){
+			max = alp2[i];
+			index=i;
+			a=0;
+		}
+		else
+			continue;
+	}
+
+	if(a==1)
+		puts("?");
+	else
+		printf("%c", alp1[index]-32);
+	return 0;
+}
