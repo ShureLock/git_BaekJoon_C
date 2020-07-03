@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int o=0, p=0;
+int fibonacci(int n) {
+    if (n == 0) {
+        o++;
+        return 0;
+    } else if (n == 1) {
+        p++;
+        return 1;
+    } else {
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+}
+
+int main(void){
+	
+	int i;
+	int N;
+	int arr[100];
+
+	scanf("%d", &N);
+	for(i=0; i<N; i++)
+		scanf("%d", &arr[i]);
+	for(i=0; i<N; i++){
+		fibonacci(arr[i]);
+		printf("%d %d\n", o, p);
+		o=0;
+		p=0;
+	}
+
+	return 0;
+}
