@@ -1,3 +1,5 @@
+//풀이 1
+
 #include <stdio.h>
 
 int o=0, p=0;
@@ -29,5 +31,65 @@ int main(void){
 		p=0;
 	}
 
+	return 0;
+}
+
+#include <stdio.h>
+
+int f[40]={0};
+int o=0, p=0;
+int fibonacci(int n) {
+
+	if(f[n]!= 0)
+		return f[n];
+	else{
+		if (n == 0) {
+			o++;
+		} else if (n == 1) {
+			p++;
+		} else {
+			f[n] = fibonacci(n-1) + fibonacci(n-2);
+		}
+		return f[n];
+	}
+}
+
+//풀이 2
+
+#include <stdio.h>
+
+int f[40]={0};
+int o=0, p=0;
+int fibonacci(int n) {
+
+	if(f[n]!= 0)
+		return f[n];
+	else{
+		if (n == 0) {
+			o++;
+		} else if (n == 1) {
+			p++;
+		} else {
+			f[n] = fibonacci(n-1) + fibonacci(n-2);
+		}
+		return f[n];
+	}
+}
+
+int main(void){
+	
+	int i;
+	int N;
+	int arr[100000];
+
+	scanf("%d", &N);
+	for(i=0; i<N; i++)
+		scanf("%d", &arr[i]);
+	for(i=0; i<N; i++){
+		fibonacci(arr[i]);
+		printf("%d %d\n", o, p);
+		o=0;
+		p=0;
+	}
 	return 0;
 }
