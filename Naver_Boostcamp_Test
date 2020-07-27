@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int n;
+	int con;
+	int i,k;
+	int j=0;
+	int l=1;
+	int a=0;
+	int arr[100][2];
+	int V_arr[100];
+
+	scanf("%d", &n);
+	scanf("%d", &con);
+	
+	for(i=0; i<con; i++){
+		scanf("%d %d", &arr[con][0], &arr[con][1]);
+	}
+	V_arr[0]=1;
+	for(i=0; i<con; i++){
+		if(arr[i][0]==1){
+			V_arr[l]=arr[i][1];
+			l++;
+		}
+	}
+	//printf("%d\n", l);
+	while(a<con){
+		for(i=0; i<con; i++){
+			for(j=0; j<sizeof(V_arr)/sizeof(int); j++){
+				if(arr[i][0]==V_arr[j]){
+					for(k=0; k<sizeof(V_arr)/sizeof(int); k++){
+						if(arr[i][1]!=V_arr[k]){
+							V_arr[l]=arr[i][1];
+							l++;
+						}
+					}
+				}
+				else if(arr[i][1]==V_arr[j]){
+					for(k=0; k<sizeof(V_arr)/sizeof(int); k++){
+						if(arr[i][0]!=V_arr[k]){
+							V_arr[l]=arr[i][0];
+							l++;
+						}
+					}
+				}
+			}
+		}
+		a++;
+	}
+	printf("%d", l+1);
+
+	return 0;
+}
