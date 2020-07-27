@@ -1,0 +1,52 @@
+/*
+검색 결과가 먼저 주어졌을 때, 패턴으로 뭘 쳐야 그 결과가 나오는지를 출력하는 문제이다. 
+패턴에는 알파벳과 "." 그리고 "?"만 넣을 수 있다. 가능하면 ?을 적게 써야 한다. 
+그 디렉토리에는 검색 결과에 나온 파일만 있다고 가정하고, 파일 이름의 길이는 모두 같다.
+첫째 줄에 파일 이름의 개수 N이 주어진다. 둘째 줄부터 N개의 줄에는 파일 이름이 주어진다. 
+N은 50보다 작거나 같은 자연수이고 파일 이름의 길이는 모두 같고 길이는 최대 50이다. 
+파일이름은 알파벳과 "." 그리고 "?"로만 이루어져 있다.
+*/
+#include <stdio.h>
+
+int main(void) {
+
+	int N;
+	char arr1[51];
+	char arr2[51];
+	int arr3[50] = {0,};
+	int i, j;
+	int n, length;
+
+	scanf("%d", &N);
+	scanf("%s", &arr1);
+	if(N==1)
+		printf("%s", arr1);
+	else{
+		for(i=0; i<sizeof(arr1)/sizeof(char); i++){
+			if(arr1[i]==0){
+				length=i;
+				n=i;
+				break;
+			}
+		}
+
+		for(i=0; i<N-1; i++){
+			scanf("%s", &arr2);
+			for(j=0; j<n; j++){
+				if(arr1[j]!=arr2[j]){
+					arr3[j]=1;
+				}
+			}
+		}
+
+		for(i=0; i<length; i++){
+			if(arr3[i]==1){
+				printf("?");
+				continue;
+			}
+			printf("%c", arr1[i]);
+		}
+	}
+
+	return 0;
+}
