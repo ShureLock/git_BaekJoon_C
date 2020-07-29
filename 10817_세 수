@@ -1,0 +1,34 @@
+/*
+세 정수 A, B, C가 주어진다. 이때, 두 번째로 큰 정수를 출력하는 프로그램을 작성하시오. 
+첫째 줄에 세 정수 A, B, C가 공백으로 구분되어 주어진다. (1 ≤ A, B, C ≤ 100)
+두 번째로 큰 정수를 출력한다.
+*/
+#include <stdio.h>
+
+int main(void) {
+
+	int max=0;
+	int arr[3]={0};
+	int i;
+	int index;
+
+	for(i=0; i<3; i++){
+		scanf("%d", &arr[i]);
+		if(arr[i]>max){
+			max=arr[i];
+			index=i;
+		}
+	}
+	arr[index]=0;
+	max=0;
+
+	for(i=0; i<3; i++){
+		if(arr[i]>max){
+			max=arr[i];
+			index=i;
+		}
+	}	
+	printf("%d", arr[index]);
+	
+	return 0;
+}
