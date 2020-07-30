@@ -1,0 +1,71 @@
+/*
+예제를 보고 규칙을 유추한 뒤에 별을 찍어 보세요.
+예제 : 
+1 :
+*
+2 :
+*
+ *
+*
+ *
+3 :
+* *
+ *
+* *
+ *
+* *
+ *
+4 :
+* *
+ * *
+* *
+ * *
+* *
+ * *
+* *
+ * *
+첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
+첫째 줄부터 차례대로 별을 출력한다.
+*/
+#include <stdio.h>
+#include <math.h>
+
+int i;
+
+void printStar1(double n){
+	n = (int)ceil(n/2);
+
+	for(i=0; i<n; i++){
+		printf("*");
+		printf(" ");
+	}
+}
+void printStar2(double n){
+	n = (int)floor(n/2);
+
+	printf(" ");
+	for(i=0; i<n; i++){
+		printf("*");
+		printf(" ");
+	}
+}
+
+int main(void) {
+
+	int N;
+	int j;
+
+	scanf("%d", &N);
+	if(N==1)
+		printf("*");
+	else{
+		for(j=0; j<N; j++){
+			printStar1(N);
+			printf("\n");
+			printStar2(N);
+			printf("\n");
+		}
+	}
+
+	return 0;
+}
