@@ -1,0 +1,78 @@
+/*
+세준이는 양수와 +, -, 그리고 괄호를 가지고 길이가 최대 50인 식을 만들었다. 
+그리고 나서 세준이는 괄호를 모두 지웠다.
+그리고 나서 세준이는 괄호를 적절히 쳐서 이 식의 값을 최소로 만들려고 한다.
+괄호를 적절히 쳐서 이 식의 값을 최소로 만드는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 식이 주어진다. 식은 ‘0’~‘9’, ‘+’, 그리고 ‘-’만으로 이루어져 있고, 
+가장 처음과 마지막 문자는 숫자이다. 그리고 연속해서 두 개 이상의 연산자가 나타나지 않고, 
+5자리보다 많이 연속되는 숫자는 없다. 수는 0으로 시작할 수 있다.
+
+출력
+첫째 줄에 정답을 출력한다.
+*/
+#include <stdio.h>
+#include <math.h>
+
+int main(void){
+
+	char str[51];
+	char temp[5];
+	int minus = 0;
+	int plus = 0;
+	int num = 0;
+	int index = 0;
+	int length = 0;
+	int len = 0;
+	int i, j=0, k;
+
+	scanf("%s", str);
+	for(i=0; i<51; i++){
+		if(str[i] == NULL)
+			break;
+		length++;
+	}
+
+	for(i=0; i<length+1; i++){
+		if(index == 0){
+			if(str[i] == '+' || str[i] == NULL){
+				for(k=0; k<len; k++)
+					num += (temp[k]-48)*((int)(pow(10.0, (len-k-1))));
+				plus += num;
+				num = 0;
+				j = 0;
+			}
+			else if(str[i] == '-'){
+				index = 1;
+				for(k=0; k<len; k++)
+					num += (temp[k]-48)*((int)(pow(10.0, (len-k-1))));
+				plus += num;
+				num = 0;
+				j = 0;
+			}
+			else{
+				temp[j] = str[i];
+				j++;
+				len = j;
+			}
+		}
+		else{
+			if(str[i] == '-' || str[i] == '+' || str[i] == NULL){
+				for(k=0; k<len; k++)
+					num += (temp[k]-48)*((int)(pow(10.0, (len-k-1))));
+				minus += num;
+				num = 0;
+				j = 0;
+			}
+			else{
+				temp[j] = str[i];
+				j++;
+				len = j;
+			}
+		}
+	}
+	printf("%d", plus-minus);
+
+	return 0;
+}
