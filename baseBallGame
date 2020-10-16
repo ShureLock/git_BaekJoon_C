@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void){
+	int i;
+	int arr[4] = {0};
+	int nrr[100]={0};
+	char z[1000];
+	int cnt;
+	int n=1;
+	int s=0;
+	int b;
+	int m;
+	char boolean = '1';
+
+	srand((int)time(NULL));	
+	for(i=0; i<4; i++){
+		m=rand()%10;
+		if(m==0)
+			i--;
+		else if(m==arr[0] || m==arr[1] || m==arr[2] || m==arr[3])
+			i--;
+		else
+			arr[i]=m;
+	}
+	
+	puts("Start Game!\n");
+	puts("'0 0 0 0' 입력 시 정답 공개\n\n");
+	while(s!=4){
+		s=0;
+		b=0;
+		cnt=0;
+		
+		printf("4개의 숫자 선택: ");
+		scanf("%[^\n]", z);
+		getchar();
+		for (; *z != NULL;)
+			if (sscanf(z, "%d %[^\n]", &nrr[cnt++], z) <= 1)
+				break;
+
+		// 정답 출력 : '0 0 0 0'
+		if(nrr[0]==0 && nrr[1]==0 && nrr[2]==0 && nrr[3]==0){
+			printf("정답 : %d %d %d %d\n\n", arr[0], arr[1], arr[2], arr[3]);
+			boolean = '0';
+			break;
+		}
+
+		// 오류 : 0 입력
+		if(nrr[0]==0 || nrr[1]==0 || nrr[2]==0 || nrr[3]==0){
+			puts("정답에 0은 없습니다. 1 ~ 9의 숫자를 입력하세요.\n");
+			continue;
+		}
+
+		// 오류 : 숫자 5개 이상 입력
+		if(nrr[4] != 0){
+				puts("초과 입력! 4개의 숫자를 입력하세요.\n");
+				nrr[4] = 0;
+				continue;
+		}
+
+		// 오류 : 두 자리 수 입력
+		if(nrr[0]/10!=0 || nrr[1]/10!=0 || nrr[2]/10!=0 || nrr[3]/10!=0){
+			puts("두 자리 이상 숫자 입력! 한 자리 숫자를 4개 입력하세요.\n");
+			continue;
+		}
+
+		// 정상 입력
+		for(i=0; i<4; i++){
+			if(nrr[i]==arr[i])
+				s++;	
+			else if(nrr[i]==arr[0] || nrr[i]==arr[1] || nrr[i]==arr[2] || nrr[i]==arr[3])
+				b++;
+			else
+				continue;
+		}
+		printf("%d번째 도전 결과: %dstrike, %dball\n\n", n,s,b);
+		n++;
+	}
+
+	if(boolean == '1')
+		printf("Game Over! ---- 도전 횟수 : %d번\n\n", n-1);
+	else
+		puts("Game Over! ---- 다음엔 끝까지 해보세요!\n");
+
+	return 0;
+}
