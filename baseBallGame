@@ -3,13 +3,13 @@
 #include <time.h>
 
 int main(void){
-	int i;
+	int i, j;
 	int arr[4] = {0};
 	int nrr[100]={0};
 	char z[1000];
 	int cnt;
-	int n=1;
-	int s=0;
+	int n = 1;
+	int s = 0;
 	int b;
 	int m;
 	char boolean = '1';
@@ -59,7 +59,7 @@ int main(void){
 				continue;
 		}
 
-		// 오류 : 두 자리 수 입력
+		// 오류 : 두 자리 이상 수 입력
 		if(nrr[0]/10!=0 || nrr[1]/10!=0 || nrr[2]/10!=0 || nrr[3]/10!=0){
 			puts("두 자리 이상 숫자 입력! 한 자리 숫자를 4개 입력하세요.\n");
 			continue;
@@ -68,8 +68,10 @@ int main(void){
 		// 오류 : 같은 수 입력
 		for(i=0; i<3; i++){
 			for(j=i+1; j<4; j++){
-				if(nrr[i] == nrr[j])
+				if(nrr[i] == nrr[j]){
 					puts("같은 수가 있습니다! 서로 다른 숫자 4개 입력하세요.\n");
+					continue;
+				}
 			}
 		}
 
